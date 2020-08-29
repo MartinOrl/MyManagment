@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux'
 import './App.css';
+import { createStructuredSelector } from 'reselect';
+import { SelectCurrentUser } from './redux/userReducer/userSelectors';
+import { SetCurrentUser, LogOut } from './redux/userReducer/userActions';
 
-function App() {
+
+function App({logIn, logOut, user}) {
+  const handleLogin = () => {
+    let user = {
+      id: 32458,
+      userName:'Lmao'
+    }
+    logIn(user)
+  }
+  const handleLogOut = () => {
+    logOut()
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p onClick={handleLogin} >Click for Login</p>
+      <p onClick={handleLogOut} >Click for LogOut</p>
+      <div>
+        {
+          user ? <p>{user.userName}</p> : <p>Not Logged In</p>
+        }
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  user: SelectCurrentUser,
+})
+
+const mapDispatchToProps = dispatch => ({
+  logIn: user => dispatch(SetCurrentUser(user)),
+  logOut: () => dispatch(LogOut()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
