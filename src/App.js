@@ -5,8 +5,9 @@ import { createStructuredSelector } from 'reselect';
 import { SelectCurrentUser } from './redux/userReducer/userSelectors';
 import { SetCurrentUser, LogOut } from './redux/userReducer/userActions';
 
+import Header from './components/header/header'
 
-function App({logIn, logOut, user}) {
+const App = ({logIn, logOut, user}) => {
   const handleLogin = () => {
     let user = {
       id: 32458,
@@ -22,13 +23,9 @@ function App({logIn, logOut, user}) {
 
   return (
     <div className="App">
-      <p onClick={handleLogin} >Click for Login</p>
-      <p onClick={handleLogOut} >Click for LogOut</p>
-      <div>
-        {
-          user ? <p>{user.userName}</p> : <p>Not Logged In</p>
-        }
-      </div>
+      {
+        user ? <Header/> : <p onClick={handleLogin} >Log In</p>
+      }
     </div>
   );
 }
