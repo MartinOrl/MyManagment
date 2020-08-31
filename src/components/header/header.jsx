@@ -2,16 +2,22 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { LogOut } from '../../redux/userReducer/userActions'
 
-import { HeaderContainer, Title, User, UserOptions, OptionsToggle, Option } from './headerStyles'
+import { HeaderContainer, User, UserOptions, OptionsToggle, Option, SidebarToggle, ToggleText } from './headerStyles'
 
-const Header = ({logOut}) => {
+import ProjectOverview from '../projectOverview/projectOverview'
+import { setSidebarDisplay } from '../../redux/displayReducer/displayActions'
+import { SelectSidebarDisplay } from '../../redux/displayReducer/displaySelectors'
+import { createStructuredSelector } from 'reselect'
+
+const Header = ({logOut, setSidebarDisplay, sidebarDisplay}) => {
     const [display, setDisplay] = useState(false)
-
+    console.log(sidebarDisplay)
     return(
         <HeaderContainer>
-            <Title>Lmao</Title>
+            <SidebarToggle onClick={setSidebarDisplay} active={sidebarDisplay} ><ToggleText>&gt;</ToggleText></SidebarToggle>
+            <ProjectOverview />
             <User>
-                <OptionsToggle onClick={() => setDisplay(!display)} >Toggle</OptionsToggle>
+                <OptionsToggle onClick={() => setDisplay(!display)} >Options</OptionsToggle>
                 <UserOptions display={display} >
                     <Option>Test</Option>
                     <Option onClick={logOut} >Log Out</Option>
@@ -20,10 +26,14 @@ const Header = ({logOut}) => {
         </HeaderContainer>
     )
 }
+const mapStateToProps = createStructuredSelector({
+    sidebarDisplay: SelectSidebarDisplay
+})
 
 const mapDispatchToProps = dispatch => ({
-    logOut: () => dispatch(LogOut())
+    logOut: () => dispatch(LogOut()),
+    setSidebarDisplay: () => dispatch(setSidebarDisplay())
 })
 
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
