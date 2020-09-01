@@ -9,8 +9,8 @@ const ProjectOverview = ({project}) => {
 
     return(
         <ProjectInfoContainer>
-            <Title>{project}</Title>
-            <Description>An AI Type of an Assistant</Description>
+            <Title>{project.name}</Title>
+            <Description>{project.description}</Description>
         </ProjectInfoContainer>
     )
 }

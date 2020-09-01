@@ -23,6 +23,35 @@ const ProjectReducer = (state = INITIAL, action ) => {
                 ...state,
                 currentProject: action.payload
             }
+        case ProjectActionTypes.REMOVE_TASK:
+            let newTasks;
+            state.projects.map(project => {
+                if(project.id === state.currentProject.id){
+                    newTasks = project.tasks
+                    newTasks.splice(newTasks.indexOf(action.payload, 1))
+                }
+                return null
+            })
+            let projects = [];
+            state.projects.map(project => {
+                if(project.id === state.currentProject.id){
+                    project.tasks = newTasks
+                }
+                projects.push(project)
+                return null
+            })
+
+            return {
+                ...state,
+                currentProject: {
+                    ...state.currentProject,
+                    tasks: [...newTasks]
+                },
+                projects: [
+                    ...projects
+                ]
+            }
+        
         default:
             return state
     }

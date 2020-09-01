@@ -35,6 +35,8 @@ const BasicStyle = css`
     overflow: hidden;
     font-size: 0;
     box-shadow: 4px 9px 5px 0px rgba(0,0,0,0.5);
+    background: #1e1f26;
+    color: whitesmoke;
 `
 
 
@@ -57,6 +59,6 @@ export const Title = styled.h1`
 
 export const Separator = styled.hr`
     width: 60%;
-    color: rgba(0,0,0,.2);
+    color: rgba(255,255,255,.2);
     margin: 5px auto;
 `

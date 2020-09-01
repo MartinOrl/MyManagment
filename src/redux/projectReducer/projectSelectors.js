@@ -11,3 +11,8 @@ export const SelectCurrentProject = createSelector(
     [ProjectState],
     projects => projects.currentProject
 )
+
+export const SelectCurrentProjectTasks = createSelector(
+    [ProjectState],
+    projects => projects.currentProject.tasks
+)

@@ -1,36 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import { createStructuredSelector } from 'reselect';
 import { SelectCurrentUser } from './redux/userReducer/userSelectors';
-import { SetCurrentUser, LogOut } from './redux/userReducer/userActions';
 
 import Main from './pages/Main'
-import { AddProject } from './redux/projectReducer/projectActions';
+import { AddProject, SetCurrentProject } from './redux/projectReducer/projectActions';
 
 
 import { TestProjects } from './testSuite'
 
-const App = ({logIn, user, addTestProjects}) => {
-  const handleLogin = () => {
-    let user = {
-      id: 32458,
-      userName:'Lmao'
-    }
-    logIn(user)
-  }
+import LogIn from './pages/LogIn'
 
-  useEffect(() => {
+class App extends React.Component {
+  componentDidMount(){
+    const { addTestProjects, setDefaultProject} = this.props
     addTestProjects(TestProjects)
-  }, [])
+    setDefaultProject(TestProjects[0])
 
-  return (
-    <div className="App">
-      {
-        user ? <Main/> : <p onClick={handleLogin} >Log In</p>
-      }
-    </div>
-  );
+  }
+  render(){
+    return (
+      <div className="App">
+        {
+          this.props.user ? <Main/> : <LogIn />
+        }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -38,9 +35,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  logIn: user => dispatch(SetCurrentUser(user)),
-  logOut: () => dispatch(LogOut()),
-  addTestProjects: project => dispatch(AddProject(project))
+  addTestProjects: project => dispatch(AddProject(project)),
+  setDefaultProject: project => dispatch(SetCurrentProject(project))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

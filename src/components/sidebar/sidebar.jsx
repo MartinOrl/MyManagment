@@ -10,8 +10,7 @@ import { SelectProjects } from '../../redux/projectReducer/projectSelectors'
 import { SetCurrentProject } from '../../redux/projectReducer/projectActions'
 
 
-const Sidebar = ({display, projects, setProject}) => {
-    console.log(projects)
+const Sidebar = ({display, projects}) => {
 
     return(
         <SidebarContainer display={display} >

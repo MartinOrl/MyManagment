@@ -1,7 +1,7 @@
 import { DisplayActionTypes } from './displayActions'
 
 const INITIAL = {
-    sidebar: true
+    sidebar: false
 }
 
 const DisplayReducer = (state = INITIAL, action) => {

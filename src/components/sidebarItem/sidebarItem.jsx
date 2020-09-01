@@ -7,7 +7,7 @@ const ItemContainer = styled.div`
     padding: 8px 0;
     transition: 300ms ease-in-out;
     &:hover{
-        background: #d0e1f9;
+        background: #6f7c85;
         cursor: pointer;
     }
 `
@@ -18,7 +18,7 @@ const ItemTItle = styled.h1`
 
 const SidebarItem = ({text, setProject}) => (
     <ItemContainer>
-        <ItemTItle onClick={()=> setProject(text)} >{text}</ItemTItle>
+        <ItemTItle onClick={()=> setProject(text)} >{text.name}</ItemTItle>
     </ItemContainer>
 )
 

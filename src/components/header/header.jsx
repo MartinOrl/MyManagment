@@ -11,7 +11,6 @@ import { createStructuredSelector } from 'reselect'
 
 const Header = ({logOut, setSidebarDisplay, sidebarDisplay}) => {
     const [display, setDisplay] = useState(false)
-    console.log(sidebarDisplay)
     return(
         <HeaderContainer>
             <SidebarToggle onClick={setSidebarDisplay} active={sidebarDisplay} ><ToggleText>&gt;</ToggleText></SidebarToggle>

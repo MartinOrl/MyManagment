@@ -24,10 +24,11 @@ const getDisplay = ({display}) => {
 export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
-    background: #b3cde0;
+    background: #1e1f26;
     transition: 300ms ease-in-out;
     width: 100%;
     padding: 16px 0;
+    color: white;
 `
 
 export const UserOptions = styled.div`
@@ -35,16 +36,20 @@ export const UserOptions = styled.div`
 `
 
 export const User = styled.div`
-    margin: auto 0;
+    margin: auto 32px auto 0;
 `
 
 export const OptionsToggle = styled.p`
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 export const Option = styled.p`
     padding: 10px 16px;
     width: 100%;
     margin: 0;
+    color: black;
     transition: 300ms ease-in-out;
     &:hover{
         background: #ddd;
@@ -71,7 +76,8 @@ export const SidebarToggle = styled.div`
     font-size: 40px;
     font-weight: 600;
     margin-left: 20px;
-    color: rgba(0,0,0,.2);
+    color: rgba(255,255,255,.6);
+    transform: translateY(-8px);
     ${getActive}
 `
 

@@ -4,7 +4,7 @@ export const ProjectInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: auto 0;
-    margin: auto auto auto 60px;
+    margin: auto auto auto 120px;
 `
 
 export const Title = styled.h1`
@@ -15,6 +15,6 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
     font-weight: 300;
-    color: #777;
+    color: rgba(255,255,255,.75);
     margin: 0;
 `

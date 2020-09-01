@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 import Header from '../header/header'
 
-const ProjectContainer = styled.div`
+import ProjectContainer from '../projectContent/projectContainer'
+
+const GlobalContainer = styled.div`
     width: 100%;
     transition: 300ms ease-in-out;
 `
@@ -12,9 +14,10 @@ const ProjectContainer = styled.div`
 const Project = () => {
 
     return(
-        <ProjectContainer>
+        <GlobalContainer>
             <Header />
-        </ProjectContainer>
+            <ProjectContainer />
+        </GlobalContainer>
     )
 }
 
